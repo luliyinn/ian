@@ -38,7 +38,7 @@ public class TakeCard : MonoBehaviour
         }
     }
 
-    private void PickUp()
+    public void PickUp()
     {
         isBeingHeld = true;
 
@@ -73,20 +73,21 @@ public class TakeCard : MonoBehaviour
         }
     }
 
-    // --- ADD THIS NEW METHOD ---
-    public void PlaceInSlot()
+    public void PlaceInSlot(Transform newParent)
     {
-        isBeingHeld = false; // Stops Update() from pulling the card to screen
-        transform.SetParent(null);
+        isBeingHeld = false; // Stops Update() from pulling the card to screen[cite: 3]
+
+        // Parent the card directly to whichever container transform was passed in!
+        transform.SetParent(newParent);
 
         if (rb != null)
         {
-            rb.isKinematic = true; // Stop physics movement
+            rb.isKinematic = true; // Stop physics movement[cite: 3]
         }
 
         if (objCollider != null)
         {
-            objCollider.enabled = false; // Disable collider so it doesn't fight physics!
+            objCollider.enabled = false; // Disable collider so it doesn't fight physics![cite: 3]
         }
     }
 

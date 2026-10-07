@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PutInBinder : MonoBehaviour
 {
+    [SerializeField] private Transform cardsContainer;
     private Vector3 cardSlot;
     private GameObject currentCardInSlot = null;
+    
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class PutInBinder : MonoBehaviour
         {
             if (heldObject.TryGetComponent(out TakeCard cardScript))
             {
-                cardScript.PlaceInSlot();
+                cardScript.PlaceInSlot(cardsContainer);
             }
 
             heldObject.transform.position = cardSlot;
